@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double LinkedList</title>
+</head>
+
+<script>
+    class DoubleLinkedList {
+        head;
+        tail;
+        noOfNode = 1;
+        constructor(data) {
+            this.head = {
+                previous: null,
+                value: data,
+                next: null,
+                node: this.noOfNode++
+            }
+
+            this.tail = this.head
+        }
+        appendNode = (newNodeData) => {
+
+            let newNode = {
+                previous: this.tail,
+                value: newNodeData,
+                next: null,
+                node: this.noOfNode++
+            }
+            this.tail.next = newNode;
+            // this.tail.previous = this.head
+            this.tail = newNode;
+        }
+        travelser = () => {
+
+            let currentNode = this.head
+
+            while (currentNode) {
+                console.log('next ', currentNode)
+                currentNode = currentNode.next
+
+                if (currentNode.next === null) {
+                    let prevNode = this.tail
+                    while (prevNode) {
+                        console.log('prev', prevNode)
+                        prevNode = prevNode.previous
+
+                    }
+                }
+            }
+
+        }
+
+
+        addNode = (position, newNodeData) => {
+            let currantNode = this.head;
+            while (currantNode) {
+                currantNode = currantNode.next
+                if (currantNode?.node === position - 1) {
+                    console.log(currantNode)
+                    let newNode = {
+
+                        previous: currantNode,
+                        value: newNodeData,
+                        next: currantNode.next,
+                        node: this.noOfNode++
+                    }
+
+                    currantNode.next = newNode;
+
+                }
+
+            }
+
+        }
+
+    }
+    let nodes = new DoubleLinkedList(100);
+    nodes.appendNode(200)
+    nodes.appendNode(300)
+    nodes.appendNode(400)
+    nodes.appendNode(500)
+    // console.log(nodes.head)
+    // nodes.travelser();
+    nodes.addNode(3, 1200)
+
+    console.log(nodes.head);
+
+</script>
+
+<body>
+
+    <h1>Double LinkedList </h1>
+</body>
+
+</html>

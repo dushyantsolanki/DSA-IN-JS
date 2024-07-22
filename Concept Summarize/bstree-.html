@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bst Tree</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        class Node {
+
+            constructor(val) {
+                this.data = val;
+                this.right = null;
+                this.left = null;
+            }
+        }
+
+
+        class BSTTree {
+
+            constructor() {
+                this.root = null
+
+            }
+
+
+
+            new_node_insert(root, newNode) {
+                if (root.data > newNode.data) {
+
+                    if (root.left === null) {
+                        root.left = newNode
+                    }
+                    else {
+                        this.new_node_insert(root.left, newNode)
+                    }
+                }
+                else {
+
+                    if (root.right === null) {
+                        root.right = newNode
+                    }
+                    else {
+                        this.new_node_insert(root.right, newNode)
+                    }
+                }
+            }
+
+            addNode_tree(val) {
+                let newNode = new Node(val)
+
+                if (this.root === null) {
+                    this.root = newNode;
+                }
+                else {
+                    this.new_node_insert(this.root, newNode)
+                }
+
+            }
+
+
+        }
+
+
+
+        let bst = new BSTTree()
+
+        bst.addNode_tree(30)
+        bst.addNode_tree(5)
+        bst.addNode_tree(10)
+        bst.addNode_tree(40)
+        bst.addNode_tree(50)
+
+
+
+
+
+        console.log(bst)
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedList Using Opps </title>
+</head>
+
+<script>
+  class Node {
+    constructor(nodeData, nodeCount) {
+      this.data = nodeData;
+      this.next = null;
+      this.no = nodeCount;
+
+    }
+
+  }
+
+
+  class LinkedList {
+    head;
+    tail;
+    nodeCount;
+    constructor(nodeData) {
+      let node1 = new Node(nodeData, 1);
+      this.head = node1;
+      this.tail = this.head;
+      this.nodeCount = 1
+    }
+
+    AddNode = (nodeData) => {
+      let newNode = new Node(nodeData, this.nodeCount + 1);
+      this.tail.next = newNode;
+      this.tail = newNode;
+      this.nodeCount++
+    };
+
+
+    travelsar = () => {
+      let currantNode = this.head;
+
+      while (currantNode) {
+        console.log(currantNode)
+        currantNode = currantNode.next;
+      }
+    }
+
+
+
+    deleteNode = (position) => {
+      let currantNode = this.head;
+
+      while (currantNode) {
+
+        if (currantNode.no === position - 1) {
+          currantNode.next = currantNode.next.next
+        }
+
+        currantNode = currantNode.next;
+      }
+    }
+
+    addNodeAny = (position, nodeData) => {
+      let currantNode = this.head;
+      while (currantNode) {
+        if (currantNode.no === position - 1) {
+          let newNode = new Node(nodeData, this.nodeCount + 1);
+          newNode.next = currantNode.next.next
+          currantNode.next = newNode
+          this.nodeCount++
+        }
+
+        currantNode = currantNode.next;
+      }
+
+    }
+  }
+
+  let node = new LinkedList(10);
+  node.AddNode(20);
+  node.AddNode(30);
+  node.AddNode(40)
+  // console.log(node);
+  // node.deleteNode(3)
+  node.addNodeAny(3, 1800)
+  node.travelsar()
+
+</script>
+
+<body>
+
+</body>
+
+</html>

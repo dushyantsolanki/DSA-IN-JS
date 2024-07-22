@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSTree Sumummrize</title>
+</head>
+
+<script>
+
+    class Node {
+        constructor(nodeData) {
+            this.value = nodeData
+            this.right = null;
+            this.left = null;
+        }
+    }
+
+    class BSTree {
+
+        constructor() {
+            this.root = null;
+        }
+
+        insertNode = (root, newNodeData) => {
+
+            if (root.value > newNodeData.value) {
+
+                if (root.left === null) {
+                    root.left = newNodeData
+                }
+                else {
+                    this.insertNode(root.left, newNodeData)
+                }
+
+            }
+            else {
+
+                if (root.right === null) {
+                    root.right = newNodeData
+                }
+                else {
+                    this.insertNode(root.right, newNodeData)
+                }
+
+            }
+
+
+
+        }
+
+
+        newNodeInsert = (nodeData) => {
+            let newNode = new Node(nodeData);
+            if (this.root === null) {
+                this.root = newNode
+            }
+            else {
+                this.insertNode(this.root, newNode)
+            }
+        }
+
+    }
+
+    let bst = new BSTree();
+    bst.newNodeInsert(100);
+    bst.newNodeInsert(20)
+    bst.newNodeInsert(200);
+    bst.newNodeInsert(50)
+    // bst.newNodeInsert(200)
+    console.log(bst.root)
+
+</script>
+
+<body>
+
+    <h1> Binary Search Tree Consept Summarize.
+
+    </h1>
+</body>
+
+</html>

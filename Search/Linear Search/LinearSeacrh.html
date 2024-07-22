@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Search
+    </title>
+</head>
+
+<script>
+
+    const linear_search = (arr, serarch_value, firstStop) => {
+
+        let count = 0;
+        let index = '';
+        let found = null;
+
+        for (let i = 0; i < arr.length; i++) {
+
+            if (arr[i] === serarch_value) {
+                found = true;
+                count++;
+                index += i + '';
+
+                if (firstStop) {
+                    return {
+                        found: found,
+                        count: count,
+                        index: index
+                    }
+                }
+            }
+
+        }
+        return {
+            found: found,
+            count: count,
+            index: index?.split('').join(',')
+        }
+    }
+
+    let arr = [1, 5, 9, 78, 3, 2, 0, 125, 0, 0, 0, 0, 8, 86, 45684, 651, 55]
+    let result = linear_search(arr, 0, false);
+    console.log(result)
+</script>
+
+
+
+<body>
+    <h1>Linear Search in Javascript</h1>
+</body>
+
+</html>

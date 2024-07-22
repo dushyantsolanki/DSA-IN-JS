@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Queue</title>
+</head>
+
+<body>
+
+    <script>
+
+        class Queue {
+
+            queue = [];
+            queue_max_size;
+            constructor(queue_size) {
+                this.queue_max_size = queue_size - 1
+                this.currant_size = 0;
+            }
+
+
+            enqueue(value) {
+
+                if (this.queue.length - 1 !== this.queue_max_size) {
+                    this.queue[this.currant_size] = value;
+                    this.currant_size += 1
+                }
+                else {
+                    console.warn('queue is full')
+                }
+
+            }
+
+            dequeue() {
+
+                if (this.queue.length === 0) {
+                    console.warn('queue is already empty')
+                }
+
+                else {
+
+                    for (let i = 0; i < this.queue.length; i++) {
+                        this.queue[i] = this.queue[i + 1]
+                    }
+                    this.currant_size -= 1
+                    this.queue.length = this.currant_size
+                }
+
+
+
+            }
+
+            display() {
+                console.log(this.queue)
+            }
+        }
+
+
+        let que = new Queue(3);
+
+        que.enqueue(10);
+        que.enqueue(20)
+        que.enqueue(30);
+
+        // que.dequeue();
+        // que.dequeue();
+        // que.dequeue();
+
+        que.display()
+
+    </script>
+</body>
+
+</html>

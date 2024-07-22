@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedList</title>
+</head>
+<script>
+
+    class LinkedList {
+        head;
+        tail;
+        noNode = 1;
+        constructor(data) {
+            this.head = {
+                value: data,
+                next: null,
+                noNode: this.noNode++
+            }
+            this.tail = this.head;
+        }
+
+        AppendNode = (newNodeData) => {
+
+            let newNode = {
+                value: newNodeData,
+                next: null,
+                noNode: this.noNode++
+            }
+
+            this.tail.next = newNode;
+            this.tail = newNode;
+
+        }
+
+        travelsar = () => {
+
+            let currantNode = this.head;
+            while (currantNode) {
+                console.log(currantNode)
+                currantNode = currantNode.next
+
+
+            }
+        }
+
+        deleteNode = (noOfNode) => {
+            let currantNode = this.head
+            while (currantNode) {
+                if (currantNode.noNode === noOfNode - 1) {
+
+                    currantNode.next = currantNode.next.next
+                    console.log('hello', currantNode)
+                }
+
+                currantNode = currantNode.next
+
+            }
+        }
+
+        addNode = (position, newNodeData) => {
+
+
+            // logic behinde the add node into the linkedList.
+            let currantNode = this.head
+            while (currantNode) {
+                if (currantNode.node === position - 1) {
+                    let newNode = {
+                        value: newNodeData,
+                        next: currantNode.next
+                    }
+                    currantNode.next = newNode
+
+                }
+
+                currantNode = currantNode.next
+            }
+
+        }
+
+        AddFirst = (newNodData) => {
+
+            let newNode = {
+                value: newNodData,
+                next: this.head
+            }
+            this.head = newNode
+        }
+
+
+
+        // here i perform a sorting based on a node value.
+        sort = () => {
+            let currantNode = this.head
+            while (currantNode) {
+                let secondCurrantNode = currantNode.next;
+                while (secondCurrantNode) {
+                    let temp;
+                    if (currantNode.value > secondCurrantNode.value) {
+
+                        temp = currantNode.value;
+                        currantNode.value = secondCurrantNode.value
+                        // console.log('currantNode inside the if statmant : ', currantNode)    
+                        secondCurrantNode.value = temp
+                        // console.log('secondCurrantNode :', secondCurrantNode)
+                    }
+
+                    secondCurrantNode = secondCurrantNode.next
+
+                }
+                currantNode = currantNode.next
+            }
+        }
+
+
+    }
+    let node = new LinkedList(50);
+    node.AppendNode(40)
+    node.AppendNode(30)
+    node.AppendNode(20)
+    node.AppendNode(10)
+    node.AppendNode(0)
+
+    // node.AppendNode(0)
+    // node.deleteNode(1)
+    node.sort();
+    node.travelsar()
+
+
+
+
+    // refrance fundamental
+    //  --->
+    // let head = {
+    //     name: 'lalo',
+    //     next: null
+    // }
+
+    // let tail = head
+
+    // //
+
+    // appendOBJ = (data) => {
+
+    //     newObj = {
+    //         name: data
+    //     }
+
+    //     tail.next = newObj
+    //     tail = newObj
+
+    // }
+
+    // appendOBJ('ram')
+    // appendOBJ('shayam')
+    // console.log("Tail  : ", tail)
+    // console.log('head ', head)
+
+</script>
+
+<body>
+    LinkedList
+</body>
+
+</html>

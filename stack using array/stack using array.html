@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - Array</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    // impentation of stack using array
+
+    class Stack {
+        arr = []
+        stack_size
+        constructor(size) {
+            this.stack_size = 0
+            this.stack_max_size = size - 1
+        }
+
+
+        push_operation(val) {
+            if (this.stack_max_size === this.arr.length - 1) {
+                alert('stack is already full !!!')
+            }
+            else {
+                this.arr[this.stack_size] = val;
+                this.stack_size += 1;
+            }
+        }
+
+        pop_operation() {
+            if (this.arr.length !== 0) {
+                this.removeElement = this.arr[this.stack_size - 1];
+                this.stack_size -= 1;
+                this.arr.length = this.stack_size;
+
+                return this.removeElement;
+            }
+            else {
+                console.log('stack is already empty !!!')
+            }
+
+
+
+        }
+
+    }
+    function reverseString(strArr) {
+
+
+        for (let i = 0; i < strArr.length; i++) {
+            numStack.push_operation(strArr[i])
+
+        }
+
+        for (let j = 0; j < strArr.length; j++) {
+            strArr[j] = numStack.pop_operation();
+        }
+
+
+
+    }
+
+    let str = 'dushyant'
+    let strArray = str.split('');
+    let numStack = new Stack(strArray.length)
+
+
+    reverseString(strArray);
+
+    console.log(strArray.join(''));
+
+
+
+
+    // numStack.push_operation(10)
+    // numStack.push_operation(20)
+    // numStack.push_operation(30)
+    // numStack.push_operation(40)
+    // numStack.push_operation(50)
+
+    // numStack.pop_operation()
+
+    // console.log(numStack.arr)
+
+
+
+
+
+
+</script>
+
+</html>
